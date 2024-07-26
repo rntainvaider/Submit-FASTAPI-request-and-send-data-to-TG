@@ -48,4 +48,45 @@ btnForm.addEventListener("click", () => {
     alert("Поле 'Номер телефона' неправильно заполнено");
     phoneNumber.value = "";
   }
+
+  submitFormData(lastName);
 });
+
+async function submitFormData(lastName) {
+  let response = await fetch("/userdata", {
+    method: "POST",
+    body: JSON.stringify({
+      lastName: lastName,
+    }),
+  });
+
+  if (response.ok) {
+    let json = await response.json();
+    console.log(json);
+  } else {
+    alert("Ошибка HTTP: " + response.status);
+  }
+}
+
+// async function send(){
+
+//     // получаем введеное в поле имя и возраст
+//     const username = document.getElementById("username").value;
+//     const userage = document.getElementById("userage").value;
+
+//     // отправляем запрос
+//     const response = await fetch("/hello", {
+//             method: "POST",
+//             headers: { "Accept": "application/json", "Content-Type": "application/json" },
+//             body: JSON.stringify({
+//                 name: username,
+//                 age: userage
+//             })
+//         });
+//         if (response.ok) {
+//             const data = await response.json();
+//             document.getElementById("message").textContent = data.message;
+//         }
+//         else
+//             console.log(response);
+// }
