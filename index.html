@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Форма данных</title>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/script.js" defer></script>
   </head>
   <body>
     <main>
@@ -16,24 +17,57 @@
               <form>
                 <div class="form">
                   <label class="form-label" for="last-name">Фамилия:</label>
-                  <input class="form-input" type="text" id="last-name" />
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="last-name"
+                    minlength="1"
+                    maxlength="20"
+                    required
+                  />
                   <label class="form-label" for="first-name">Имя:</label>
-                  <input class="form-input" type="text" id="first-name" />
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="first-name"
+                    minlength="1"
+                    maxlength="20"
+                    required
+                  />
                   <label class="form-label" for="patronimic">Отчество:</label>
-                  <input class="form-input" type="text" id="patronimic" />
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="patronimic"
+                    minlength="1"
+                    maxlength="20"
+                    required
+                  />
                   <label class="form-label" for="date-of-birth"
                     >Дата рождения:</label
                   >
-                  <input class="form-input" type="date" id="date-of-birth" />
+                  <input
+                    class="form-input"
+                    type="date"
+                    id="date-of-birth"
+                    required
+                  />
                   <label class="form-label" for="email">Email:</label>
-                  <input class="form-input" type="email" id="email" />
+                  <input class="form-input" type="email" id="email" required />
                   <label class="form-label" for="phone-number"
                     >Номер телефона:</label
                   >
-                  <input class="form-input" type="text" id="phone-number" />
-                  <div class="button-box">
-                    <button class="btn-form">Отправить в Telegram</button>
-                  </div>
+                  <input
+                    class="form-input"
+                    type="text"
+                    id="phone-number"
+                    required
+                  />
+                  <input
+                    class="btn-form"
+                    type="button"
+                    value="Отправить в Telegram"
+                  />
                 </div>
               </form>
             </div>

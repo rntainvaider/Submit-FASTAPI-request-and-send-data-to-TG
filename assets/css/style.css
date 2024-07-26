@@ -55,6 +55,11 @@ body {
   cursor: pointer;
 }
 
+.form-input::placeholder {
+  color: red;
+  border-bottom: 1px solid red;
+}
+
 .form-label {
   font-size: 20px;
   font-weight: 400;
@@ -72,10 +77,14 @@ body {
 
 .btn-form {
   padding: 7px;
-  width: 70%;
   font-size: 14px;
   border-radius: 10px;
   background-color: GreenYellow;
   border: none;
   cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn-form:active {
+  background-color: red;
 }
