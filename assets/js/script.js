@@ -49,7 +49,14 @@ btnForm.addEventListener("click", () => {
     phoneNumber.value = "";
   }
 
-  submitFormData();
+  submitFormData(
+    lastName.value,
+    firstName.value,
+    patronimic.value,
+    dateOfBrith.value,
+    email.value,
+    phoneNumber.value
+  );
 });
 
 async function submitFormData(
@@ -60,16 +67,20 @@ async function submitFormData(
   email,
   phoneNumber
 ) {
-  let response = await fetch("/userdata", {
+  let url = "http://127.0.0.1:8000/userdata";
+  let response = await fetch(url, {
     method: "POST",
-    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
-      lastName: lastName,
-      firstName: firstName,
+      last_name: lastName,
+      first_name: firstName,
       patronimic: patronimic,
-      dateOfBrith: dateOfBrith,
+      date_of_brith: dateOfBrith,
       email: email,
-      phoneNumber: phoneNumber,
+      phone_number: phoneNumber,
     }),
   });
 
