@@ -49,14 +49,27 @@ btnForm.addEventListener("click", () => {
     phoneNumber.value = "";
   }
 
-  submitFormData(lastName);
+  submitFormData();
 });
 
-async function submitFormData(lastName) {
+async function submitFormData(
+  lastName,
+  firstName,
+  patronimic,
+  dateOfBrith,
+  email,
+  phoneNumber
+) {
   let response = await fetch("/userdata", {
     method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
     body: JSON.stringify({
       lastName: lastName,
+      firstName: firstName,
+      patronimic: patronimic,
+      dateOfBrith: dateOfBrith,
+      email: email,
+      phoneNumber: phoneNumber,
     }),
   });
 
@@ -67,26 +80,3 @@ async function submitFormData(lastName) {
     alert("Ошибка HTTP: " + response.status);
   }
 }
-
-// async function send(){
-
-//     // получаем введеное в поле имя и возраст
-//     const username = document.getElementById("username").value;
-//     const userage = document.getElementById("userage").value;
-
-//     // отправляем запрос
-//     const response = await fetch("/hello", {
-//             method: "POST",
-//             headers: { "Accept": "application/json", "Content-Type": "application/json" },
-//             body: JSON.stringify({
-//                 name: username,
-//                 age: userage
-//             })
-//         });
-//         if (response.ok) {
-//             const data = await response.json();
-//             document.getElementById("message").textContent = data.message;
-//         }
-//         else
-//             console.log(response);
-// }
