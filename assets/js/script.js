@@ -67,7 +67,7 @@ async function submitFormData(
   email,
   phoneNumber
 ) {
-  let url = "http://127.0.0.1:8000/userdata";
+  let url = "http://127.0.0.1:8000/userdata/";
   let response = await fetch(url, {
     method: "POST",
     headers: {
