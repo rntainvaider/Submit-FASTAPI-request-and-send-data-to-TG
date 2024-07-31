@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from config import TOKEN
+from config import TOKEN, CHAT_ID
 import aiohttp
 
 class Data(BaseModel):
@@ -35,6 +35,15 @@ def root():
 
 @app.post("/userdata/")
 async def user_data(data: Data):
+    message = (
+            f"Данные пользователя\n"
+            f"Фамилия: {data.last_name}\n"
+            f"Имя: {data.first_name}\n"
+            f"Отчество: {data.patronimic}\n"
+            f"Дата рождения: {data.date_of_brith}\n"
+            f"Email: {data.email}\n"
+            f"Номер телефона: {data.phone_number}"
+                )
     async with aiohttp.ClientSession() as sess: 
-        await sess.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data={"chat_id": 1149708469, "text": data, "parse_mode": "Markdown"})
+        resp = await sess.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data={"chat_id": CHAT_ID, "text": message, "parse_mode": "Markdown"})
     return {"it's okay?": True, "data": data}
