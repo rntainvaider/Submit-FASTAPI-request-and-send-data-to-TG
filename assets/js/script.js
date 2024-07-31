@@ -48,4 +48,45 @@ btnForm.addEventListener("click", () => {
     alert("Поле 'Номер телефона' неправильно заполнено");
     phoneNumber.value = "";
   }
+
+  submitFormData(
+    lastName.value,
+    firstName.value,
+    patronimic.value,
+    dateOfBrith.value,
+    email.value,
+    phoneNumber.value
+  );
 });
+
+async function submitFormData(
+  lastName,
+  firstName,
+  patronimic,
+  dateOfBrith,
+  email,
+  phoneNumber
+) {
+  let url = "http://127.0.0.1:8000/userdata/";
+  let response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      last_name: lastName,
+      first_name: firstName,
+      patronimic: patronimic,
+      date_of_brith: dateOfBrith,
+      email: email,
+      phone_number: phoneNumber,
+    }),
+  });
+
+  if (response.ok) {
+    let json = await response.json();
+  } else {
+    alert("Ошибка HTTP: " + response.status);
+  }
+}
